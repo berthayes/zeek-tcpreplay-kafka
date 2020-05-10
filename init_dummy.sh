@@ -1,4 +1,5 @@
 #!/bin/sh
+
 ip link add dummy0 type dummy
 ifconfig dummy0 mtu 3000
 ifconfig dummy0 up
