@@ -15,6 +15,8 @@ Zeek is configured to send its output to a host named broker.
 
 ## Examples
 
+Specify your broker host, run from your current working directory with a file named zeek_streamer.pcap at ```./pcaps/zeek_streamer.pcap``` 
+
 ```
 docker run -it \
 -v `pwd`/pcaps/:/pcaps \
@@ -23,4 +25,12 @@ docker run -it \
 bertisondocker/zeek-tcpreplay-kafka:latest
 ```
 
+Or, run with your own local.zeek and send-to-kafka.zeek files:
 
+```
+docker run -it \
+-v `pwd`/local.zeek:/usr/local/zeek/share/zeek/site/local.zeek \
+-v `pwd`/send-to-kafka.zeek:/usr/local/zeek/share/zeek/site/send-to-kafka.zeek \
+--add-host broker:192.168.1.108 \
+bertisondocker/zeek-tcpreplay-kafka:latest
+```
