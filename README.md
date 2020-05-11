@@ -16,7 +16,7 @@ Zeek is configured to send its output to a host named broker.
 ## Why tcpreplay?
 There are a few other (better) Docker images out there that can use Zeek to read pcaps and send the output to Apache Kafka.
 
-This one uses ```tcpreplay``` to read a pcap and stream it in real-time as its original pace instead of all at once. In other words, if it took six hours to generate your 100MB pcap, this will stream those packets at their original rate over the course of those six hours.  In this way, streaming Zeek events stream into Apache Kafka at their original rate, instead of all at once.
+This one uses ```tcpreplay``` to read a pcap and stream it in real-time as its original pace instead of all at once. In other words, if it took six hours to generate your 100MB pcap, this will stream those packets at their original rate over the course of those six hours.  In this way, streaming Zeek events stream into Apache Kafka at their original rate.
 
 This Docker image is also (*maybe*) unique in that it uses a ```dummy0``` network interface, so you can replay all kinds of nasty garbage without causing actual harm to network admins.
 
