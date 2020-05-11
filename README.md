@@ -54,5 +54,5 @@ So if you already have a file named ```zeek_streamer.pcap``` as above, then you'
 Since ./pcaps/ is a bind mount to /pcaps in the docker image
 :
 ```
-docker exec -d 2f8f331fc56a /usr/bin/tcpreplay -i dummy0 /pcaps/heavy_dns.pcap
+docker exec -d <CONTAINER ID> /usr/bin/tcpreplay -i dummy0 /pcaps/heavy_dns.pcap
  ```
