@@ -36,6 +36,7 @@ Or, run with your own local.zeek and send-to-kafka.zeek files:
 
 ```
 docker run -it \
+-v `pwd`/pcaps/:/pcaps \
 -v `pwd`/local.zeek:/usr/local/zeek/share/zeek/site/local.zeek \
 -v `pwd`/send-to-kafka.zeek:/usr/local/zeek/share/zeek/site/send-to-kafka.zeek \
 --cap-add=NET_ADMIN \
