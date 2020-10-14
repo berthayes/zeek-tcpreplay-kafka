@@ -16,7 +16,7 @@ Zeek is configured to send its output to a host named broker.
 ## Why tcpreplay?
 There are a few other (better) Docker images out there that can use Zeek to read pcaps and send the output to Apache Kafka.
 
-This one uses ```tcpreplay``` to read a pcap and stream it in real-time as its original pace instead of all at once. In other words, if it took six hours to generate your 100MB pcap, this will stream those packets at their original rate over the course of those six hours.  In this way, streaming Zeek events stream into Apache Kafka at their original rate, instead of all at once.
+This one uses ```tcpreplay``` to read a pcap and stream it in real-time as its original pace instead of all at once. In other words, if it took six hours to generate your 100MB pcap, this will stream those packets at their original rate over the course of those six hours.  In this way, streaming Zeek events stream into Apache Kafka at their original rate.
 
 This Docker image is also (*maybe*) unique in that it uses a ```dummy0``` network interface, so you can replay all kinds of nasty garbage without causing actual harm to network admins.
 
@@ -36,6 +36,7 @@ Or, run with your own local.zeek and send-to-kafka.zeek files:
 
 ```
 docker run -it \
+-v `pwd`/pcaps/:/pcaps \
 -v `pwd`/local.zeek:/usr/local/zeek/share/zeek/site/local.zeek \
 -v `pwd`/send-to-kafka.zeek:/usr/local/zeek/share/zeek/site/send-to-kafka.zeek \
 --cap-add=NET_ADMIN \
@@ -54,5 +55,5 @@ So if you already have a file named ```zeek_streamer.pcap``` as above, then you'
 Since ./pcaps/ is a bind mount to /pcaps in the docker image
 :
 ```
-docker exec -d 2f8f331fc56a /usr/bin/tcpreplay -i dummy0 /pcaps/heavy_dns.pcap
+docker exec -d <CONTAINER ID> /usr/bin/tcpreplay -i dummy0 /pcaps/heavy_dns.pcap
  ```
