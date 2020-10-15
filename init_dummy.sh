@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # give all of the other hosts a chance to get up and running
-sleep 30
+sleep 90
 
 ip link add dummy0 type dummy
 ifconfig dummy0 mtu 3000
