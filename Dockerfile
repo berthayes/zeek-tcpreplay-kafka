@@ -7,7 +7,7 @@ LABEL maintainer "https://github.com/berthayes"
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get install -y cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev git tcpreplay clang librdkafka-dev net-tools iproute2
+RUN apt-get install -y cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev git tcpreplay clang librdkafka-dev net-tools iproute2 softflowd
 
 RUN echo "===> Cloning zeek..." \
   && cd /tmp \
